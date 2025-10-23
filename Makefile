@@ -4,4 +4,10 @@ SRC = $(wildcard src/*.c)
 OUT = tx
 
 $(OUT): $(SRC)
-	$(CC) $(SRC) -o $(OUT) $(FLAGS)
+	$(CC) $(FLAGS) -o $(OUT) $(SRC)
+
+clean:
+	rm -f $(OUT)
+
+run: $(OUT)
+	./$(OUT)
