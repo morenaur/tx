@@ -1,7 +1,3 @@
-#include <unistd.h>
-#include <ctype.h>
-#include <stdio.h>
-
 #include "term.h"
 
 int main(void) {
@@ -10,7 +6,9 @@ int main(void) {
 
     while (1) {
         char c = '\0';
-        read(STDIN_FILENO, &c, 1);
+        if (read(STDIN_FILENO, &c, 1) == -1 && errno != EAGAIN)
+            die("read");
+
         if (iscntrl(c)) {
             printf("%d\r\n", c);
         } else {
