@@ -3,5 +3,6 @@
 
 void enable_raw_mode(void);
 void disable_raw_mode(void);
+void die(const char *s);
 
 #endif
